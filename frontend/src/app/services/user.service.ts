@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators'
-
-// const httpOptions = ({
-//   headers: new HttpHeaders({'Content-Type': 'application/json'})
-// })
+const httpOptions = ({
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+})
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +21,13 @@ export class UserService {
   }
 
   loginUser(username: string, password: string): Observable<any> {
-    console.log('Hi')
-    const formData = new FormData()
-    formData.append('username', username)
-    formData.append('password', password) 
-    console.log(formData);
-    return this.http.post(this.api_link + 'login/', formData)
-      
-    
+    return this.http.post(this.api_link + 'api-auth/login/', {username, password}, httpOptions).pipe(
+      map(user => {
+        if (user && user.token) {
+          localStorage.setItem("currentUser", JSON.stringify(user));
+        }
+      })
+    )
   }
 
   logout() {
