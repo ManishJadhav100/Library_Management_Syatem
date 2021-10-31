@@ -1,6 +1,6 @@
 import { UserService } from './../services/user.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-login-user',
@@ -10,22 +10,22 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginUserComponent implements OnInit {
 
-  username!: string;
-  password!: string;
-  @ViewChild('loginForm') loginForm!: NgForm;
-
+  loginForm: FormGroup;
   constructor(private uService: UserService) { }
 
   ngOnInit(): void {
-    
+    this.loginForm = new FormGroup ({
+      username: new FormControl(''),
+      password: new FormControl('')
+    });
   }
 
-  
+  get f() {
+    return this.loginForm.controls;
+  }
 
-  login() {
-    console.log(this.username, this.password);
-    console.log(this.loginForm.valid)
-    this.uService.loginUser(this.username, this.password).subscribe
+  onSubmit() {
+    this.uService.loginUser(this.f.username.value, this.f.password.value).subscribe
       data => {
         console.log(data);
       }
@@ -45,3 +45,4 @@ export class LoginUserComponent implements OnInit {
   // }
 
 }
+
