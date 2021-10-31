@@ -4,20 +4,20 @@
 # Backend
 -----------------------
 
-1) Creare a virtual anvironment of python in backend folder using below command
+1) Creare a virtual anvironment of python in backend folder using below command.
 python -m venv venv
 
 2) Activate the virtual environment
 venv\Scripts\activate
 
-3)Install all python packages present in requirements.txt file using below command
+3)Install all python packages present in requirements.txt file using below command.
 pip install -r requirements.txt
 
 4)Run Django server at default port localhost:8000
 python manage.py runserver
 
 -----------------------
-# Database Connectin
+# Database Connection
 -----------------------
 1) Create a database named as library
 
