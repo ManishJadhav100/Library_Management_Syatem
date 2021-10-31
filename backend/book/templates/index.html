@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div style="margin: 10px auto; width: 90%;">
+        <h1 style="text-align: center;">Library Management System</h1>
+    </div>
+    
+
+    <table style="width: 100%; text-align: center;">
+        <tr>
+            <th>Book Title</th>
+            <th>Author Name</th>
+            <th>Category</th>
+            <th>Publication</th>
+            <th>Publication Date</th>
+            <th>Price</th>
+            {% if user.is_authenticated %}
+            <th colspan="2" >Action</th>
+            {% endif %}
+        </tr>
+             {% for book in books %}
+        <tr>
+            <td>{{  book.title }}</td>
+            <td>{{  book.author }}</td>
+            <td>{{  book.category }}</td>
+            <td>{{  book.publication }}</td>
+            <td>{{  book.publication_date }}</td>
+            <td>{{  book.price }}</td>
+            {% if user.is_authenticated %}
+            <td><a class="edit-button" href="{% url 'editBookForm' book.id %}">Edit</a></td>
+            <td><a class="delete-button" href="{% url 'deleteBook' book.id %}">Delete</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %} 
+    </table>
+
+
+{% endblock %}

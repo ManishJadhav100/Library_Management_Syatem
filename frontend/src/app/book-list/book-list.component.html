@@ -1,0 +1,27 @@
+
+<div style="margin: 10px auto; width: 90%;">
+  <h1 style="text-align: center;">Library Management System</h1>
+</div>
+
+
+<table style="width: 100%; text-align: center;">
+  <tr>
+      <th>Book Title</th>
+      <th>Author Name</th>
+      <th>Category</th>
+      <th>Publication</th>
+      <th>Publication Date</th>
+      <th>Price</th>
+      <th colspan="2" >Action</th>
+  </tr>
+  <tr *ngFor= "let book of books">
+      <td>{{  book.title }}</td>
+      <td>{{  book.author }}</td>
+      <td>{{  book.category }}</td>
+      <td>{{  book.publication }}</td>
+      <td>{{  book.publication_date }}</td>
+      <td>{{  book.price }}</td>
+      <td><a class="edit-button" (click)="bookSelected(book)" >Edit</a></td>
+      <td><a class="delete-button" href="">Delete</a></td>
+  </tr>
+</table>
