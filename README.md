@@ -4,10 +4,10 @@
 # Backend
 -----------------------
 
-1) Creare a virtual anvironment of python in backend folder using below command.
+1) Creare a virtual environment of python in backend folder using below command.
 python -m venv venv
 
-2) Activate the virtual environment
+2) Activate the virtual environment.
 venv\Scripts\activate
 
 3)Install all python packages present in requirements.txt file using below command.
